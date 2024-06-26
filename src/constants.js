@@ -1,96 +1,131 @@
-import react from 'react';
+import react from "react";
 import { useState } from "react";
 export const IMG_CDN_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { TbProgressHelp } from "react-icons/tb";
-  import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    Button
-  } from '@chakra-ui/react'
-  import { useDisclosure } from '@chakra-ui/react';
-  import { RiMenu3Fill,RiContactsLine } from "react-icons/ri";
-  import { BiHome } from "react-icons/bi";
-  import { FcAbout } from "react-icons/fc";
-  import { Icon } from "@chakra-ui/react";
-  import { BiSolidUser } from "react-icons/bi";
-  import { useRef } from 'react';
-  
-  export function DrawerExample() {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const btnRef = useRef()
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-    return (
-      <>
-        <Button ref={btnRef} backgroundColor='#374151'
-          _hover={{ bg: '#111827' }}
-          onClick={onOpen} >
-        <RiMenu3Fill className='text-2xl font-semibold text-white'/>
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Button,
+} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
+import { RiMenu3Fill, RiContactsLine } from "react-icons/ri";
+import { BiHome } from "react-icons/bi";
+import { FcAbout } from "react-icons/fc";
+import { Icon } from "@chakra-ui/react";
+import { BiSolidUser } from "react-icons/bi";
+import { useRef } from "react";
 
-        </Button>
-        <Drawer
-          isOpen={isOpen}
-          placement='right'
-          onClose={onClose}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader>FlavourFusion</DrawerHeader>
-  
-            <DrawerBody>
+export function DrawerExample() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = useRef();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  return (
+    <>
+      <div
+        ref={btnRef}
+        className="text-white bg-black hover:bg-gray-700 py-2 px-2 md:px-4 rounded-md duration-200 cursor-pointer"
+        onClick={onOpen}
+      >
+        <RiMenu3Fill className="text-xl md:text-2xl font-semibold text-white" />
+      </div>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>FlavourFusion</DrawerHeader>
+
+          <DrawerBody>
             <ul className="flex gap-1 flex-col font-roboto font-medium text-lg ">
-          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
-            <Link to="/" className="flex items-center gap-1" onClick={onClose}><BiHome />Home</Link>
-          </li>
-          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
-            <Link to="/about" className="flex items-center gap-1" onClick={onClose}><FcAbout/>About</Link>
-          </li>
-          {/* <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
+              <li className="hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm">
+                <Link
+                  to="/"
+                  className="flex items-center gap-1"
+                  onClick={onClose}
+                >
+                  <BiHome />
+                  Home
+                </Link>
+              </li>
+              <li className="hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm">
+                <Link
+                  to="/about"
+                  className="flex items-center gap-1"
+                  onClick={onClose}
+                >
+                  <FcAbout />
+                  About
+                </Link>
+              </li>
+              {/* <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
             <Link to="/instamart">Instamart</Link>
           </li> */}
-          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm' onClick={onClose}>
-            <Link to="/help" className="flex items-center gap-1"><TbProgressHelp /> Help</Link>
-          </li>
-          {/* <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>  
+              <li
+                className="hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm"
+                onClick={onClose}
+              >
+                <Link to="/help" className="flex items-center gap-1">
+                  <TbProgressHelp /> Help
+                </Link>
+              </li>
+              {/* <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>  
             <Link to="/contact" className="flex items-center gap-1" onClick={onClose}><RiContactsLine />Contact</Link>
           </li> */}
-         
-        </ul>
-            </DrawerBody>
-  
-            <DrawerFooter>
-              <Button variant='outline' mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <div>
-          {isLoggedIn ? (
-            <Button onClick={()=> {setIsLoggedIn(false)}} colorScheme="white" variant="outline" fontSize={18}  gap={1}>
-              <Icon as={BiSolidUser} />
-              Log in  
+            </ul>
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant="outline" mr={3} onClick={onClose}>
+              Cancel
             </Button>
-          ) : (
-            <Button onClick={()=> {setIsLoggedIn(true)}} colorScheme="white" variant="outline" fontSize={18}  gap={1}>
-              <Icon as={BiSolidUser}/>
-              Log out
-            </Button>
-          )}
-        </div>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      </>
-    )
-  }
+            <div>
+              {isLoggedIn ? (
+                <Button
+                  onClick={() => {
+                    setIsLoggedIn(false);
+                  }}
+                  colorScheme="white"
+                  variant="outline"
+                  fontSize={18}
+                  gap={1}
+                >
+                  <Icon as={BiSolidUser} />
+                  Log in
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    setIsLoggedIn(true);
+                  }}
+                  colorScheme="white"
+                  variant="outline"
+                  fontSize={18}
+                  gap={1}
+                >
+                  <Icon as={BiSolidUser} />
+                  Log out
+                </Button>
+              )}
+            </div>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
+  );
+}
 export const RestaurantList = [
   {
     info: {

@@ -33,26 +33,21 @@ const Body= () => {
     return (allRestaurants.length===0)? <Shimmer/> :(
         <>
             {console.log(allRestaurants.length)}
-            <div className="h-[90vh] w-[80vw] m-auto rounded-md my-6 shadow-[rgba(0,0,0,0.07)_0px_1px_2px,rgba(0,0,0,0.07)_0px_2px_4px,rgba(0,0,0,0.07)_0px_4px_8px,rgba(0,0,0,0.07)_0px_8px_16px,rgba(0,0,0,0.07)_0px_16px_32px,rgba(0,0,0,0.07)_0px_32px_64px]">
-                <div className="overflow-hidden h-[100%] w-[100%] flex">
-                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src="https://images.unsplash.com/photo-1563683640683-74f1723873d0?q=80&w=1398&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-
-                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src="https://images.unsplash.com/photo-1643341936218-fc5399005f0c?q=80&w=1477&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-
-                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src="https://images.unsplash.com/photo-1550389636-ad25afa7ab44?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-                </div>
+            <div className="flex flex-col font-bold text-center">
+                <span className="text-4xl md:text-6xl my-6 bg-gradient-to-r from-black via-gray-700 to-gray-500 bg-clip-text text-transparent md:hover:text-7xl transition-all ease-in duration-300">Welcome to Food Network</span>
+                <span className="text-base md:text-2xl mb-4 text-gray-500 md:hover:text-3xl transition-all ease-in duration-300">Destination for all your last minute cravings.</span>
             </div>
-            <div className="mt-2 mb-5 flex justify-center gap-2">
+            <div className="mt-2 mb-5 flex justify-center gap-2 px-4">
                 <input
                     type="text"
-                    className="border-[2px] border-l-4 border-r-4 border-neutral-500 rounded-full w-2/5 p-1 text-sm h-10 font-serif focus: outline-none"
+                    className="border border-solid border-gray-500 rounded-md w-3/4 md:w-2/5 md:p-1 text-sm h-8 md:h-10 font-semibold focus: outline-none"
                     placeholder="ex: The Filter Coffee"
                     value={searchText}
                     onChange={(e)=>{
                         return setSearchText(e.target.value);
                     }}
                 />
-                <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>{
+                <button className="text-white bg-black hover:bg-gray-700 focus:outline-none font-semibold space-x-1 rounded-md px-4 py-1 md:px-5 md:py-2 text-center duration-200" onClick={()=>{
                     const data=filterData(searchText,allRestaurants);
                     return setFilteredRestaurants(data);
                 }}>Search</button>
