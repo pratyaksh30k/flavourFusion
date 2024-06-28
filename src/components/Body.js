@@ -29,6 +29,7 @@ const Body= () => {
     }   
 
     if(!allRestaurants) return null;
+    console.log(allRestaurants);
     
     return (allRestaurants.length===0)? <Shimmer/> :(
         <>
