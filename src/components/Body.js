@@ -24,10 +24,10 @@ const Body= () => {
 
     const isOnline = useOnline();    //created a useOnline custom hook which returns true or false
     console.log(isOnline);
-    console.log(allRestaurants);
     if(!isOnline){
         return <h1>🔴 You are offline, Plz check your internet connection</h1>
     }   
+    console.log(allRestaurants);
 
     if(!allRestaurants) return null;
     
