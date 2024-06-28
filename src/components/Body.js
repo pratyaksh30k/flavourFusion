@@ -22,9 +22,9 @@ const Body= () => {
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
-    console.log(allRestaurants);
     const isOnline = useOnline();    //created a useOnline custom hook which returns true or false
     console.log(isOnline);
+    console.log(allRestaurants);
     if(!isOnline){
         return <h1>🔴 You are offline, Plz check your internet connection</h1>
     }   
