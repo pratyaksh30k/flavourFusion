@@ -22,6 +22,7 @@ const Body= () => {
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
+    console.log(allRestaurants);
     const isOnline = useOnline();    //created a useOnline custom hook which returns true or false
     console.log(isOnline);
     if(!isOnline){
@@ -29,7 +30,6 @@ const Body= () => {
     }   
 
     if(!allRestaurants) return null;
-    console.log(allRestaurants);
     
     return (allRestaurants.length===0)? <Shimmer/> :(
         <>
